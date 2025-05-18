@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 
 // Dynamically import Three.js based components to prevent SSR issues
+const AnimatedCTA = dynamic(()=> import("../../components/AnimatedCTA"),{ssr:false})
 const AnimatedHero = dynamic(() => import("../../components/AnimatedHero"), { ssr: false });
 const Sphere3D = dynamic(() => import("../../components/Sphere3D"), { ssr: false });
 
@@ -13,7 +14,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navbar with glass effect */}
-      <header className="fixed w-full z-50">
+      <header className="relative w-full z-50">
         <div className="backdrop-blur-md bg-white/70 shadow-sm">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center py-4">
@@ -783,6 +784,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-blue-600 to-indigo-600 text-white">
+        <AnimatedCTA />
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h2 
